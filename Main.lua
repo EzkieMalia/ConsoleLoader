@@ -13,7 +13,7 @@ queue_on_teleport([[
             return __OldNamecall(self, ...)
         end))
         loadstring(game:HttpGet("https://raw.githubusercontent.com/EzkieMalia/ConsoleLoader/refs/heads/main/Main.lua"))()
-    elseif (game.PlaceId == 15124180230) then
+    elseif (game.PlaceId == 13643807539) then
         messagebox("Is console servers.", "hello", "1")
         game:GetService("ScriptContext"):SetTimeout(.5)
         repeat task.wait() until not game.ReplicatedFirst:FindFirstChild("Intro")
