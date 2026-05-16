@@ -1,7 +1,8 @@
 queue_on_teleport([[
     if (game.PlaceId == 10179538382) then
         game:GetService("ScriptContext"):SetTimeout(.5)
-        local __OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
+        local __OldNamecall = nil
+        __OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
             local Method = getnamecallmethod()
             if (Method == "IsTenFootInterface") then
                 return true
