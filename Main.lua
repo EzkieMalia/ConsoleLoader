@@ -1,4 +1,5 @@
 queue_on_teleport([[
+    game:GetService("ScriptContext"):SetTimeout(.5)
     if (game.PlaceId == 10179538382) then
         game:GetService("ScriptContext"):SetTimeout(.5)
         local __OldNamecall = nil
