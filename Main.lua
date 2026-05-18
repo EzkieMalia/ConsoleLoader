@@ -1,6 +1,7 @@
 queue_on_teleport([[
     game:GetService("ScriptContext"):SetTimeout(.5)
     if (game.PlaceId == 10179538382) then
+        getgenv().BypassFirstServer = true
         script_key=readfile("6XSouthBronxKey.txt");
         loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/7d75d185a82b2e127255c59aba87d6c6.lua"))()
         repeat task.wait() until getgenv().BypassedFirstServer == true
