@@ -10,6 +10,12 @@ queue_on_teleport([[
             if (Method == "InvokeServer" and tostring(self) ~= "GetInitDataRequest") then
                 return task.wait(9e9)
             end
+            if (Method == "FireServer") then
+                local Arguments = table.pack(...)
+                if (#Arguments) ~= 1 then
+                    return task.wait(9e9)
+                end
+            end
             return __OldNamecall(self, ...)
         end))
         loadstring(game:HttpGet("https://raw.githubusercontent.com/EzkieMalia/ConsoleLoader/refs/heads/main/Main.lua"))()
