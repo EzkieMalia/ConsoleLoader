@@ -1,18 +1,30 @@
 queue_on_teleport([[
     game:GetService("ScriptContext"):SetTimeout(.5)
     if (game.PlaceId == 10179538382) then
-        getgenv().BypassFirstServer = true
-        script_key=readfile("6XSouthBronxKey.txt");
-        loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/7d75d185a82b2e127255c59aba87d6c6.lua"))()
-        repeat task.wait() until getgenv().BypassedFirstServer == true
+        local HyphonScript = nil
+        local function FindHyphonScript()
+            for i, Object in pairs(getnilinstances()) do
+                if (Object:IsA("Script") and Object.Name:len() == 32) then
+                    HyphonScript = Object
+                end
+            end
+        end
+        repeat 
+            FindHyphonScript()
+            task.wait()
+        until (HyphonScript)
         local __OldNamecall = nil
         __OldNamecall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
             local Method = getnamecallmethod()
+            local Traceback = debug.traceback()
+            if (Traceback:match("PlayerGui")) then
+                local SourceName = Traceback:gsub(string.format("Players.%s.PlayerGui.", game.Players.LocalPlayer.Name), "")
+                if (SourceName:len() > 32) then
+                    return task.wait(9e9)
+                end
+            end
             if (Method == "IsTenFootInterface") then
                 return true
-            end
-            if (Method ~= "FireServer") then
-                return task.wait(9e9)
             end
             return __OldNamecall(self, ...)
         end))
